@@ -9,6 +9,7 @@ public class Verify {
     private static String userId = "";
     private static String sessData = "";
     private static String biliJct = "";
+    private static String buvid3 = "";
 
 
     private final static Verify VERIFY = new Verify();
@@ -24,10 +25,11 @@ public class Verify {
      * @param sessData sessData
      * @param biliJct  biliJct or CSRF
      */
-    public static void verifyInit(String userId, String sessData, String biliJct) {
+    public static void verifyInit(String userId, String sessData, String biliJct,String buvid3) {
         Verify.userId = userId;
         Verify.sessData = sessData;
         Verify.biliJct = biliJct;
+        Verify.buvid3 = buvid3;
     }
 
 
@@ -46,8 +48,12 @@ public class Verify {
     public String getBiliJct() {
         return biliJct;
     }
+    
+    public String getBuvid3() {
+        return buvid3;
+    }
 
     public String getVerify() {
-        return "\"bili_jct=" + getBiliJct() + ";SESSDATA=" + getSessData() + ";DedeUserID=" + getUserId();
+        return "\"bili_jct=" + getBiliJct() + ";SESSDATA=" + getSessData() + ";DedeUserID=" + getUserId() + ";Buvid3=" + getBuvid3();
     }
 }
