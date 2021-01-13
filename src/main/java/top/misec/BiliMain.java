@@ -22,10 +22,14 @@ public class BiliMain {
             logger.warn("Cookies参数缺失，请检查是否在Github Secrets中配置Cookies参数");
         }
         //读取环境变量
-        Verify.verifyInit(args[0], args[1], args[2]);
+        logger.info(args[0]);
+        logger.info(args[1]);
+        logger.info(args[2]);
+        logger.info(args[3]);
+        Verify.verifyInit(args[0], args[1], args[2], args[3]);
 
-        if (args.length > 3) {
-            ServerVerify.verifyInit(args[3]);
+        if (args.length > 4) {
+            ServerVerify.verifyInit(args[4]);
         }
 
 
