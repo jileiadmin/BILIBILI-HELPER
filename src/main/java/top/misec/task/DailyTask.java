@@ -459,22 +459,24 @@ public class DailyTask {
             doServerPush();
         }
 
-        Config.getInstance().configInit();
+        if(userInfo!=null){
+            Config.getInstance().configInit();
 
-        String uname = userInfo.getUname();
-        //用户名模糊处理 @happy88888
-        int s1 = uname.length() / 2, s2 = (s1 + 1) / 2;
-        logger.info("用户名称: " + uname.substring(0, s2) + String.join("",
-                Collections.nCopies(s1, "*")) + uname.substring(s1 + s2));
-        logger.info("硬币余额: " + userInfo.getMoney());
+            String uname = userInfo.getUname();
+            //用户名模糊处理 @happy88888
+            int s1 = uname.length() / 2, s2 = (s1 + 1) / 2;
+            logger.info("用户名称: " + uname.substring(0, s2) + String.join("",
+                    Collections.nCopies(s1, "*")) + uname.substring(s1 + s2));
+            logger.info("硬币余额: " + userInfo.getMoney());
 
-        int upgradeDay = (userInfo.getLevel_info().getNext_exp_asInt() - userInfo.getLevel_info().getCurrent_exp()) /
-                (Config.getInstance().getNumberOfCoins() * 10 + 15);
-        if (userInfo.getLevel_info().getCurrent_level() < 6) {
-            logger.info("距离升级到Lv" + (userInfo.getLevel_info().getCurrent_level() + 1) + "还有: " +
-                    upgradeDay + "天");
-        } else {
-            logger.info("当前等级Lv6，经验值为：" + userInfo.getLevel_info().getCurrent_exp());
+            int upgradeDay = (userInfo.getLevel_info().getNext_exp_asInt() - userInfo.getLevel_info().getCurrent_exp()) /
+                    (Config.getInstance().getNumberOfCoins() * 10 + 15);
+            if (userInfo.getLevel_info().getCurrent_level() < 6) {
+                logger.info("距离升级到Lv" + (userInfo.getLevel_info().getCurrent_level() + 1) + "还有: " +
+                        upgradeDay + "天");
+            } else {
+                logger.info("当前等级Lv6，经验值为：" + userInfo.getLevel_info().getCurrent_exp());
+            }
         }
     }
 
