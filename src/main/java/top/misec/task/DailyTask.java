@@ -249,6 +249,7 @@ public class DailyTask {
         /*
         兑换银瓜子后，更新userInfo中的硬币值
          */
+        if(userInfo!=null)
         userInfo.setMoney(silver2coinMoney);
 
     }
