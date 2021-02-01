@@ -320,7 +320,7 @@ public class DailyTask {
         int day = cal.get(Calendar.DATE);
 
         //B币券余额
-        int couponBalance = userInfo.getWallet().getCoupon_balance();
+        int couponBalance = userInfo!=null ? userInfo.getWallet().getCoupon_balance() : 0;
         //大会员类型
         int vipType = queryVipStatusType();
         //被充电用户的userID
