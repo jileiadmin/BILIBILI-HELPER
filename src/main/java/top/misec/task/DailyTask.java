@@ -304,7 +304,7 @@ public class DailyTask {
      * 2:年会员
      */
     public int queryVipStatusType() {
-        if (userInfo.getVipStatus() == 1) {
+        if (userInfo!=null&&userInfo.getVipStatus() == 1) {
             //只有VipStatus为1的时候获取到VipType才是有效的。
             return userInfo.getVipType();
         } else {
