@@ -261,6 +261,7 @@ public class DailyTask {
      */
     public JsonObject getDailyTaskStatus() {
         JsonObject jsonObject = HttpUtil.doGet(ApiList.reward);
+        if(jsonObject==null) return null;
         int responseCode = jsonObject.get(statusCodeStr).getAsInt();
         if (responseCode == 0) {
             logger.info("请求本日任务完成状态成功");
@@ -274,6 +275,7 @@ public class DailyTask {
 
     public void videoWatch() {
         JsonObject dailyTaskStatus = getDailyTaskStatus();
+        if(dailyTaskStatus==null) return;
         String aid = regionRanking();
         if (!dailyTaskStatus.get("watch").getAsBoolean()) {
             int playedTime = new Random().nextInt(90) + 1;
